@@ -31,10 +31,21 @@ export class AppComponent implements OnInit {
     this.signupForm.statusChanges.subscribe((status) => {
       console.log('status change : ' + status);
     });
+
+    // set default values to form in init state
+    this.signupForm.setValue({
+      userData: {
+        username: 'max',
+        email: 'abc@gmail.com'
+      },
+      'gender': 'male',
+      'hobbies': []
+    });
   }
 
   onSubmit() {
     console.log(this.signupForm);
+    this.signupForm.reset(); // this will clear all data of form
   }
 
   onAddHobby() {
